@@ -20,20 +20,27 @@ public class Enemy : MonoBehaviour
     {
         var step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x,4f), step);
+        if (gameObject.transform.position.y >=4f)
+        {
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
         
         RaycastHit2D hit = Physics2D.Raycast(cannon.transform.position, -Vector2.up);
-        Debug.DrawRay(cannon.transform.position,-Vector2.up, Color.red);
+        //Debug.DrawRay(cannon.transform.position,-Vector2.up, Color.red);
 
         if (hit.collider.gameObject.CompareTag("Player"))
         {
             Instantiate(bulletprefab, cannon.transform.position, cannon.transform.rotation);
-            Debug.Log("hit");
         }
         
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject);
+        if (col.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }

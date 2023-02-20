@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
+        Physics.IgnoreLayerCollision(6,2);
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()

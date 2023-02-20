@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Scroller : MonoBehaviour
 {
-    [Range(0f, 5f)]
-    public float scrollSpeed= 0.5f;
+    [Range(0f, 5f)] public float scrollSpeed= 0.5f;
     private float offset;
     private Renderer mat;
     void Start()
