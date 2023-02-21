@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     private bool IsSpawning;
     [SerializeField] private float spawnTimer = 1f;
+    [SerializeField] private float maxSpawn = 6f;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     private void FixedUpdate()
     {
         currentEnemy = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if (currentEnemy <= 5f && IsSpawning == false)
+        if (currentEnemy <= maxSpawn && IsSpawning == false)
         {
             StartCoroutine(SpawnEnemy());
             IsSpawning = true;

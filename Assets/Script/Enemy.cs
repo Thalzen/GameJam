@@ -14,6 +14,12 @@ public class Enemy : MonoBehaviour
     private bool IsAlreadyFiring;
     private Animator _animator;
     private bool isDestroyed;
+    [SerializeField] private AppDatas _appDatas;
+
+    public delegate void EnemyEvent();
+
+    public static event EnemyEvent EnemyKilled;
+    
 
     private void Start()
     {
@@ -25,12 +31,18 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         var step = speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x,4f), step);
+        if (isDestroyed == false)
+        { 
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,4f), step);
+
+        }
+        
         Fire();
     }
 
     private void FixedUpdate()
     {
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         if (gameObject.transform.position.y >=4f)
         {
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -53,7 +65,7 @@ public class Enemy : MonoBehaviour
     {
         
         RaycastHit2D hit = Physics2D.Raycast(cannon.transform.position, -Vector2.up);
-        if (hit.collider.gameObject.CompareTag("Player") && _player.IsUnderWater == false == IsAlreadyFiring == false)
+        if (hit.collider.gameObject.CompareTag("Player") && _player.IsUnderWater == false == IsAlreadyFiring == false && isDestroyed == false)
         {
             IsAlreadyFiring = true;
             StartCoroutine(OpenFire());
@@ -64,7 +76,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator OpenFire()
     {
         Instantiate(bulletprefab, cannon.transform.position, cannon.transform.rotation);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.7f);
         IsAlreadyFiring = false;
     }
 
@@ -72,6 +84,8 @@ public class Enemy : MonoBehaviour
     {
         
         _animator.Play("Destruction");
+        _appDatas.killCounter++;
+        EnemyKilled?.Invoke();
         yield return new WaitForSeconds(0.6f);
         Destroy(gameObject);
     }

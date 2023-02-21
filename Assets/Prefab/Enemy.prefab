@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 8357941275411781653}
   - component: {fileID: 622001040}
   - component: {fileID: 3403412321965179289}
-  - component: {fileID: 1213947331}
   - component: {fileID: 1774488563744665173}
-  m_Layer: 2
+  - component: {fileID: -2808630964294410852}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -134,7 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletprefab: {fileID: 1050477061685439537, guid: 2b5ed748d89581a4ebb7fc904874dde7, type: 3}
   cannon: {fileID: 1553695487}
-  speed: 2
+  speed: 3
+  _appDatas: {fileID: 11400000, guid: 9191bec521625114287233b7bd9db8c6, type: 2}
 --- !u!50 &3403412321965179289
 Rigidbody2D:
   serializedVersion: 4
@@ -149,29 +150,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1213947331
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854494894684387147}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.03999996}
-  serializedVersion: 2
-  m_Radius: 0.83
 --- !u!95 &1774488563744665173
 Animator:
   serializedVersion: 4
@@ -192,3 +177,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &-2808630964294410852
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854494894684387147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
