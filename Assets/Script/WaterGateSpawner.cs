@@ -30,7 +30,7 @@ public class WaterGateSpawner : MonoBehaviour
 
     IEnumerator SpawnWaterGate()
     {
-        var position = new Vector2(Random.Range(-3f, 3), 7f);
+        var position = new Vector2(Random.Range(spawnPos[0].position.x, spawnPos[1].position.x), 7f);
         Instantiate(waterGate[Random.Range(0,waterGate.Length)],position, gameObject.transform.rotation);
         yield return new WaitForSeconds(spawnRate);
         Spawning = false;

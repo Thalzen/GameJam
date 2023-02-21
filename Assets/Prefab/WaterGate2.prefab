@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5310219329852600005}
   - component: {fileID: 3440687424320493691}
   - component: {fileID: 6088954595035761930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaterGate2
   m_TagString: WaterGate
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010705471, y: -0.1661359}
+  m_Offset: {x: -0.023618937, y: -0.5668933}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2084918, y: 1.1202338}
+  m_Size: {x: 0.37169647, y: 0.17539299}
   m_EdgeRadius: 0
 --- !u!114 &3440687424320493691
 MonoBehaviour:

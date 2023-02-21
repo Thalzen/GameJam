@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         
-        var position = new Vector2(Random.Range(-3.80f,4.20f),5.77f);
+        var position = new Vector2(Random.Range(spawnPos[0].position.x,spawnPos[1].position.x),5.77f);
         Instantiate(enemyPrefab, position, Quaternion.identity);
         yield return new WaitForSeconds(spawnTimer);
         IsSpawning = false;
