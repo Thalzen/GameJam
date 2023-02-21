@@ -22,7 +22,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer != LayerIgnoreRaycast && col.gameObject.layer != LayerIgnoreBullet)
+        //col.gameObject.layer != LayerIgnoreRaycast &&
+        if ( col.gameObject.layer != LayerIgnoreBullet)
         {
             Destroy(gameObject);
         }

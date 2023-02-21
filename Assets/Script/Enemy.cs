@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Destruction()
     {
+        
         _animator.Play("Destruction");
         yield return new WaitForSeconds(0.6f);
         Destroy(gameObject);

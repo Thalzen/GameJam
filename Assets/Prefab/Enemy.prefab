@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553695487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.456, z: 0}
+  m_LocalPosition: {x: 0, y: -1.006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletprefab: {fileID: 1050477061685439537, guid: 2b5ed748d89581a4ebb7fc904874dde7, type: 3}
   cannon: {fileID: 1553695487}
-  speed: 1
+  speed: 2
 --- !u!50 &3403412321965179289
 Rigidbody2D:
   serializedVersion: 4
