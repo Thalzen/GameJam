@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [SerializeField]private AudioClip lasersound;
     [SerializeField]private AudioClip splashsound;
     [SerializeField]private AudioClip destructsound;
+    private bool BeingHealed;
 
 
     void Start()
@@ -113,11 +114,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Heart") && !IsUnderWater && !EnteringWaterGate)
-        {
-            Debug.Log("HEAL");
-            GetHealth();
-        }
+        
 
         
     }
@@ -132,6 +129,10 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Mine") && IsUnderWater && !isTakingDamage && !EnteringWaterGate )
         {
             TakeDamage();
+        }
+        if (col.CompareTag("Heart") && !IsUnderWater && !EnteringWaterGate && BeingHealed == false)
+        {
+            GetHealth();
         }
     }
 
@@ -191,6 +192,14 @@ public class Player : MonoBehaviour
 
     }
 
+    private IEnumerator Gettingheal()
+    {
+        Health += 10f;
+        Healthbar.fillAmount = Health / MaxHeat;
+        yield return new WaitForSeconds(1f);
+        BeingHealed = false;
+    }
+
     private IEnumerator IncreaseIce()
     {
         CurrentIce += 10f;
@@ -237,8 +246,8 @@ public class Player : MonoBehaviour
     
     private void GetHealth()
     {
-        Health += 10f;
-        Healthbar.fillAmount = Health / MaxHeat;
+        BeingHealed = true;
+        StartCoroutine(Gettingheal());
     }
 
     private IEnumerator DiedDestroyed()

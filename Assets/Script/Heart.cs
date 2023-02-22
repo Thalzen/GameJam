@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Heart : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     private Player _player;
+    private bool destroyingHeart;
 
     private void Start()
     {
@@ -34,9 +36,16 @@ public class Heart : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (col.gameObject.CompareTag("Player") && _player.EnteringWaterGate == false && _player.IsUnderWater == false)
+        if (col.gameObject.CompareTag("Player") && _player.EnteringWaterGate == false && _player.IsUnderWater == false && destroyingHeart == false)
         {
-            Destroy(gameObject);
+            destroyingHeart = true;
+            StartCoroutine(DestroyHeart());
         }
+    }
+
+    private IEnumerator DestroyHeart()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
 }
