@@ -9,6 +9,8 @@ TagManager:
   - WaterGate
   - EnemyBullet
   - Wall
+  - Mine
+  - Heart
   layers:
   - Default
   - TransparentFX

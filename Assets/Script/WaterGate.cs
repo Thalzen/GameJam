@@ -7,8 +7,9 @@ public class WaterGate : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
      private Player _player;
-    private void Start()
+     private void Start()
     {
+        
         _player = FindObjectOfType<Player>();
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f,-1f) * speed;
     }
@@ -27,11 +28,13 @@ public class WaterGate : MonoBehaviour
         {
             speed = 1.5f;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f,-1f) * speed;
+            //splashHolder.Play("Splash");
         }
         else
         {
             speed = 5f;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f,-1f) * speed;
+            //splashHolder.Play("Splash");
         }
     }
 

@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     private bool isDestroyed;
     [SerializeField] private AppDatas _appDatas;
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip lasersound;
+    [SerializeField] private AudioClip destructsound;
 
     public delegate void EnemyEvent();
 
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        _audio = GetComponent<AudioSource>();
         _player = FindObjectOfType<Player>();
         _animator = GetComponent<Animator>();
         target = GameObject.Find("Player");
@@ -76,6 +80,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator OpenFire()
     {
         Instantiate(bulletprefab, cannon.transform.position, cannon.transform.rotation);
+        _audio.PlayOneShot(lasersound);
         yield return new WaitForSeconds(0.7f);
         IsAlreadyFiring = false;
     }
@@ -84,9 +89,10 @@ public class Enemy : MonoBehaviour
     {
         
         _animator.Play("Destruction");
+        _audio.PlayOneShot(destructsound);
         _appDatas.killCounter++;
         EnemyKilled?.Invoke();
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

@@ -9,7 +9,7 @@ public class WaterGateSpawner : MonoBehaviour
     [SerializeField] private GameObject[] waterGate;
     [SerializeField] private Transform[] spawnPos;
     private bool Spawning;
-    private float spawnRate = 2f;
+    private float spawnRate = 2.5f;
     
 
     void Start()
