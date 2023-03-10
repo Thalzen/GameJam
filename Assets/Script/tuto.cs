@@ -10,6 +10,8 @@ public class tuto : MonoBehaviour
     [SerializeField] private GameObject[] image;
     [SerializeField] private GameObject[] text;
     [SerializeField] private GameObject[] fleche;
+    [SerializeField] private GameObject tutotouche;
+    [SerializeField] private GameObject fadeout;
     private int i = 0;
 
     private void Update()
@@ -26,8 +28,14 @@ public class tuto : MonoBehaviour
             
         }
 
+        if (i == 4)
+        {
+            fadeout.SetActive(false);
+        }
+
         if (Input.GetMouseButtonUp(0) && i == 5)
         {
+            tutotouche.SetActive(false);
             SceneManager.LoadScene(sceneName:"Level1");
         }
     }

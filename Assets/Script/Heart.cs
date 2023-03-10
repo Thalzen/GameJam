@@ -45,7 +45,7 @@ public class Heart : MonoBehaviour
 
     private IEnumerator DestroyHeart()
     {
-        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
+        yield break;
     }
 }
